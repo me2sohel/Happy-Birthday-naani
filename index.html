@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Puchu ❤️</title>
+    <title>A Little Surprise ❤️</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -14,247 +13,335 @@
 
 <body>
 
-    <!-- Falling Petals -->
-    <div id="petals-container"></div>
+    <!-- =========================
+         LOCK SCREEN
+    ========================== -->
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <section id="lockScreen">
 
-        <div class="hero-content">
+        <div class="lock-content">
 
-            <p class="small-title">28 June ✨</p>
+            <div class="gift-icon">
+                🎁
+            </div>
 
-            <h1>Happy Birthday ❤️</h1>
+            <h1>
+                A Little Surprise Is Waiting...
+            </h1>
 
-<p>
+            <p class="lock-message">
 
-If I could give you one gift,
+                Someone spent time creating
+                something special for you.
 
-it would be the ability
-to see yourself through my eyes.
+                <br><br>
 
-Because then you'd know
-how special you truly are.
+                But every gift has a moment.
 
-</p>
+                <br><br>
 
-<p style="margin-top:30px">
+                Please wait until the countdown ends ❤️
 
-Thank you for visiting
-my little universe.
+            </p>
 
-✨
+            <div id="giftCountdown">
 
-</p>
-       <!-- Journey Box section -->
-            <div class="journey-box">
+                <span id="days">00</span>
+                <span id="hours">00</span>
+                <span id="minutes">00</span>
+                <span id="seconds">00</span>
 
-    <p class="journey-text">
-        Today isn't about counting time.
-        It's about celebrating you.
-    </p>
+            </div>
 
-    <button id="journeyBtn">
-        Begin Your Journey ✨
-    </button>
-
-</div>
-
-            <button id="musicBtn">
-                🎵 Play Music
+            <button id="unlockBtn" disabled>
+                🔒 Open Surprise
             </button>
 
         </div>
 
     </section>
 
-    <!-- Typewriter Wish -->
-    <section class="wish-section">
 
-        <h2>A Little Message For You 💌</h2>
+    <!-- =========================
+         OPENING ANIMATION
+    ========================== -->
 
-        <p id="typewriter"></p>
+    <section id="openingScreen">
 
-    </section>
+        <div class="opening-content">
 
-    <!-- 28 Reasons -->
-    <section class="reasons-section">
+            <div class="opening-gift">
+                🎁
+            </div>
 
-        <h2>28 Reasons Why You're Special ✨</h2>
-
-        <div class="reasons-grid">
-
-            <div class="reason-card">1. Your smile</div>
-            <div class="reason-card">2. Your kindness</div>
-            <div class="reason-card">3. Your innocence</div>
-            <div class="reason-card">4. Your courage</div>
-            <div class="reason-card">5. Your heart</div>
-            <div class="reason-card">6. Your laugh</div>
-            <div class="reason-card">7. Your honesty</div>
-            <div class="reason-card">8. Your dreams</div>
-            <div class="reason-card">9. Your patience</div>
-            <div class="reason-card">10. Your energy</div>
-            <div class="reason-card">11. Your warmth</div>
-            <div class="reason-card">12. Your simplicity</div>
-            <div class="reason-card">13. Your strength</div>
-            <div class="reason-card">14. Your wisdom</div>
-            <div class="reason-card">15. Your humor</div>
-            <div class="reason-card">16. Your loyalty</div>
-            <div class="reason-card">17. Your spirit</div>
-            <div class="reason-card">18. Your uniqueness</div>
-            <div class="reason-card">19. Your confidence</div>
-            <div class="reason-card">20. Your empathy</div>
-            <div class="reason-card">21. Your compassion</div>
-            <div class="reason-card">22. Your curiosity</div>
-            <div class="reason-card">23. Your resilience</div>
-            <div class="reason-card">24. Your positivity</div>
-            <div class="reason-card">25. Your authenticity</div>
-            <div class="reason-card">26. Your generosity</div>
-            <div class="reason-card">27. Your magic</div>
-            <div class="reason-card">28. Simply because you're you ❤️</div>
+            <h2>Opening Your Gift...</h2>
 
         </div>
 
     </section>
 
-    <!-- Memory Cards -->
-    <section class="memory-section">
 
-        <h2>Little Things I Want To Tell You 🌸</h2>
+    <!-- =========================
+         MAIN WEBSITE
+    ========================== -->
 
-        <div class="memory-grid">
+    <div id="mainWebsite">
 
-            <div class="memory-card">
-                <div class="front">Click Me ✨</div>
-                <div class="back">
-                    You probably don't know this,
-                    but your presence makes ordinary days better.
-                </div>
-            </div>
+        <!-- Petals -->
 
-            <div class="memory-card">
-                <div class="front">Open Me 💕</div>
-                <div class="back">
-                    One thing I admire about you:
-                    your beautiful heart.
-                </div>
-            </div>
+        <div id="petals-container"></div>
 
-            <div class="memory-card">
-                <div class="front">Secret #3 🌷</div>
-                <div class="back">
-                    Some people leave memories.
-                    You leave feelings.
-                </div>
-            </div>
+        <!-- HERO -->
 
-            <div class="memory-card">
-                <div class="front">Secret #4 ⭐</div>
-                <div class="back">
-                    Thank you for existing.
-                </div>
-            </div>
+        <section class="hero">
 
-        </div>
+            <div class="hero-content">
 
-    </section>
-
-    <!-- Story Chapters -->
-    <section class="story-section">
-
-        <h2>Our Storybook 📖</h2>
-
-        <div class="story-container">
-
-            <div class="chapter">
-                <h3>Chapter I</h3>
-                <p>
-                    The first impression.
+                <p class="small-title">
+                    28 June ✨
                 </p>
-            </div>
 
-            <div class="chapter">
-                <h3>Chapter II</h3>
-                <p>
-                    The person I discovered.
+                <h1>
+                    Happy Birthday ❤️
+                </h1>
+
+                <p class="hero-text">
+
+                    I made this little corner
+                    of the internet for one reason.
+
+                    <br><br>
+
+                    To celebrate someone
+                    who means more than
+                    she probably knows.
+
                 </p>
+
+                <button id="journeyBtn">
+                    Begin Your Journey ✨
+                </button>
+
             </div>
 
-            <div class="chapter">
-                <h3>Chapter III</h3>
+        </section>
+
+        <!-- TYPEWRITER -->
+
+        <section class="wish-section">
+
+            <h2>
+                A Little Message For You 💌
+            </h2>
+
+            <p id="typewriter"></p>
+
+        </section>
+
+        <!-- 28 REASONS -->
+
+        <section class="reasons-section">
+
+            <h2>
+                28 Reasons Why You're Special ✨
+            </h2>
+
+            <div class="reasons-grid">
+
+                <!-- Replace with personal reasons -->
+
+                <div class="reason-card">Reason #1</div>
+                <div class="reason-card">Reason #2</div>
+                <div class="reason-card">Reason #3</div>
+                <div class="reason-card">Reason #4</div>
+                <div class="reason-card">Reason #5</div>
+                <div class="reason-card">Reason #6</div>
+                <div class="reason-card">Reason #7</div>
+                <div class="reason-card">Reason #8</div>
+                <div class="reason-card">Reason #9</div>
+                <div class="reason-card">Reason #10</div>
+                <div class="reason-card">Reason #11</div>
+                <div class="reason-card">Reason #12</div>
+                <div class="reason-card">Reason #13</div>
+                <div class="reason-card">Reason #14</div>
+                <div class="reason-card">Reason #15</div>
+                <div class="reason-card">Reason #16</div>
+                <div class="reason-card">Reason #17</div>
+                <div class="reason-card">Reason #18</div>
+                <div class="reason-card">Reason #19</div>
+                <div class="reason-card">Reason #20</div>
+                <div class="reason-card">Reason #21</div>
+                <div class="reason-card">Reason #22</div>
+                <div class="reason-card">Reason #23</div>
+                <div class="reason-card">Reason #24</div>
+                <div class="reason-card">Reason #25</div>
+                <div class="reason-card">Reason #26</div>
+                <div class="reason-card">Reason #27</div>
+                <div class="reason-card">Reason #28 ❤️</div>
+
+            </div>
+
+        </section>
+
+        <!-- MEMORY CARDS -->
+
+        <section class="memory-section">
+
+            <h2>
+                Little Things I Want To Tell You 🌸
+            </h2>
+
+            <div class="memory-grid">
+
+                <div class="memory-card">
+                    <div class="front">Click Me ✨</div>
+                    <div class="back">
+                        Replace with your message.
+                    </div>
+                </div>
+
+                <div class="memory-card">
+                    <div class="front">Open Me 💕</div>
+                    <div class="back">
+                        Replace with your message.
+                    </div>
+                </div>
+
+                <div class="memory-card">
+                    <div class="front">Secret #3 🌷</div>
+                    <div class="back">
+                        Replace with your message.
+                    </div>
+                </div>
+
+                <div class="memory-card">
+                    <div class="front">Secret #4 ⭐</div>
+                    <div class="back">
+                        Replace with your message.
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- STORY -->
+
+        <section class="story-section">
+
+            <h2>
+                Our Storybook 📖
+            </h2>
+
+            <div class="story-container">
+
+                <div class="chapter">
+                    <h3>Chapter I</h3>
+                    <p>The beginning.</p>
+                </div>
+
+                <div class="chapter">
+                    <h3>Chapter II</h3>
+                    <p>What I discovered.</p>
+                </div>
+
+                <div class="chapter">
+                    <h3>Chapter III</h3>
+                    <p>What I cherish.</p>
+                </div>
+
+                <div class="chapter">
+                    <h3>Final Chapter</h3>
+                    <p>Today ❤️</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SECRET LETTER -->
+
+        <section class="letter-section">
+
+            <h2>
+                Psst... One Last Thing 💌
+            </h2>
+
+            <button id="openLetter">
+                Open Secret Letter
+            </button>
+
+            <div id="secretLetter">
+
                 <p>
-                    The moments I cherish.
+                    Replace this with your real letter.
                 </p>
+
             </div>
 
-            <div class="chapter">
-                <h3>Final Chapter</h3>
-                <p>
-                    Today.
-                </p>
-            </div>
+        </section>
 
-        </div>
+        <!-- FINAL GIFT -->
 
-    </section>
+        <section class="final-section">
 
-    <!-- Secret Letter -->
-    <section class="letter-section">
+            <h2>
+                Final Gift 🎁
+            </h2>
 
-        <h2>Psst... One Last Thing 💌</h2>
+            <button id="surpriseBtn">
+                Open Final Surprise
+            </button>
 
-        <button id="openLetter">
-            Open Secret Letter
-        </button>
+        </section>
 
-        <div id="secretLetter">
+    </div>
 
-            <p>
-                If I could gift you one thing,
-                it would be the ability to see yourself through my eyes.
-            </p>
 
-            <p>
-                Because then you'd know just how special you truly are.
-            </p>
+    <!-- =========================
+         FINAL SCREEN
+    ========================== -->
 
-            <p>
-                Happy Birthday, Puchu ❤️
-            </p>
-
-        </div>
-
-    </section>
-
-    <!-- Final Surprise -->
-    <section class="final-section">
-
-        <h2>🎁 Final Gift</h2>
-
-        <button id="surpriseBtn">
-            Open Final Surprise
-        </button>
-
-    </section>
-
-    <!-- Fullscreen Surprise -->
     <div id="surpriseScreen">
 
         <div class="surprise-content">
 
-            <h1>Happy Birthday Puchu ❤️</h1>
+            <h1>
+                Happy Birthday ❤️
+            </h1>
 
             <p>
-                May this year bring you happiness,
-                peace, beautiful memories,
-                and everything your heart wishes for.
+
+                If I could give you one gift,
+
+                <br><br>
+
+                it would be the ability
+                to see yourself through my eyes.
+
+                <br><br>
+
+                Because then you'd know
+                how special you truly are.
+
+            </p>
+
+            <p style="margin-top:30px;">
+
+                Thank you for visiting
+                my little universe.
+
+                ✨
+
             </p>
 
         </div>
 
     </div>
 
-    <!-- Audio -->
+
+    <!-- AUDIO -->
+
     <audio id="birthdayMusic" loop>
         <source src="assets/music.mp3" type="audio/mpeg">
     </audio>
