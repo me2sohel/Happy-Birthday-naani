@@ -1,281 +1,450 @@
-/* =========================
-   COUNTDOWN TIMER
-========================= */
+/* ==================================
+   ELEMENTS
+================================== */
 
-/*const birthdayDate = new Date("June 28, 2026 00:00:00").getTime();
+const lockScreen =
+document.getElementById("lockScreen");
 
-const countdown = document.getElementById("countdown");
+const openingScreen =
+document.getElementById("openingScreen");
 
-function updateCountdown() {
+const mainWebsite =
+document.getElementById("mainWebsite");
+
+const unlockBtn =
+document.getElementById("unlockBtn");
+
+const daysEl =
+document.getElementById("days");
+
+const hoursEl =
+document.getElementById("hours");
+
+const minutesEl =
+document.getElementById("minutes");
+
+const secondsEl =
+document.getElementById("seconds");
+
+
+/* ==================================
+   COUNTDOWN TO UNLOCK
+================================== */
+
+/*
+CHANGE THIS DATE
+*/
+
+const unlockDate =
+new Date("June 28, 2026 00:00:00").getTime();
+
+function updateGiftCountdown(){
 
     const now = new Date().getTime();
-    const distance = birthdayDate - now;
 
-    if (distance <= 0) {
+    const distance =
+    unlockDate - now;
 
-        countdown.innerHTML = `
-            <span>🎉</span>
-            <span>IT'S</span>
-            <span>YOUR</span>
-            <span>DAY!</span>
-        `;
+    if(distance <= 0){
+
+        daysEl.innerText = "🎉";
+        hoursEl.innerText = "🎉";
+        minutesEl.innerText = "🎉";
+        secondsEl.innerText = "🎉";
+
+        unlockBtn.disabled = false;
+
+        unlockBtn.classList.add("active");
+
+        unlockBtn.innerHTML =
+        "🎁 Open Your Surprise";
 
         return;
     }
 
-    const days = Math.floor(
-        distance / (1000 * 60 * 60 * 24)
+    const days =
+    Math.floor(
+        distance /
+        (1000*60*60*24)
     );
 
-    const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24))
+    const hours =
+    Math.floor(
+        (distance %
+        (1000*60*60*24))
         /
-        (1000 * 60 * 60)
+        (1000*60*60)
     );
 
-    const minutes = Math.floor(
-        (distance % (1000 * 60 * 60))
+    const minutes =
+    Math.floor(
+        (distance %
+        (1000*60*60))
         /
-        (1000 * 60)
+        (1000*60)
     );
 
-    const seconds = Math.floor(
-        (distance % (1000 * 60))
+    const seconds =
+    Math.floor(
+        (distance %
+        (1000*60))
         /
         1000
     );
 
-    countdown.innerHTML = `
-        <span>${days} Days</span>
-        <span>${hours} Hours</span>
-        <span>${minutes} Minutes</span>
-        <span>${seconds} Seconds</span>
-    `;
+    daysEl.innerText =
+    String(days).padStart(2,"0");
+
+    hoursEl.innerText =
+    String(hours).padStart(2,"0");
+
+    minutesEl.innerText =
+    String(minutes).padStart(2,"0");
+
+    secondsEl.innerText =
+    String(seconds).padStart(2,"0");
 }
 
-setInterval(updateCountdown, 1000);
-updateCountdown();
+setInterval(
+    updateGiftCountdown,
+    1000
+);
+
+updateGiftCountdown();
 
 
-/* =========================
-   TYPEWRITER EFFECT
-========================= */
+/* ==================================
+   OPEN GIFT
+================================== */
+
+unlockBtn.addEventListener(
+"click",
+() => {
+
+    if(unlockBtn.disabled)
+    return;
+
+    lockScreen.style.display =
+    "none";
+
+    openingScreen.style.display =
+    "flex";
+
+    setTimeout(() => {
+
+        openingScreen.style.display =
+        "none";
+
+        mainWebsite.style.display =
+        "block";
+
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+
+        startTypewriter();
+
+    },3000);
+
+});
+
+
+/* ==================================
+   JOURNEY BUTTON
+================================== */
+
 const journeyBtn =
 document.getElementById("journeyBtn");
 
-journeyBtn.addEventListener("click", () => {
+if(journeyBtn){
 
-    document
-    .querySelector(".wish-section")
-    .scrollIntoView({
-        behavior:"smooth"
+    journeyBtn.addEventListener(
+    "click",
+    () => {
+
+        document
+        .querySelector(".wish-section")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
     });
 
-});
-const message = `
+}
 
-Happy Birthday, Puchu ❤️
+
+/* ==================================
+   TYPEWRITER
+================================== */
+
+const typewriterElement =
+document.getElementById(
+"typewriter"
+);
+
+const birthdayMessage =
+
+`Happy Birthday ❤️
 
 Today is not just another day.
 
-It is the celebration of the day
-someone truly special came into this world.
+It's the celebration of the day
+someone incredibly special
+came into this world.
 
-May your heart always stay happy,
-your dreams continue growing,
-and your smile never fade.
+I hope today brings you smiles,
+beautiful memories,
+and all the happiness you deserve.
 
-Thank you for being exactly who you are.
+Thank you for being you. ✨`;
 
-✨
+let messageIndex = 0;
 
-`;
+function startTypewriter(){
 
-const typewriterElement =
-document.getElementById("typewriter");
+    if(!typewriterElement)
+    return;
 
-let charIndex = 0;
+    typewriterElement.innerHTML = "";
 
-function typeWriter() {
+    messageIndex = 0;
 
-    if (charIndex < message.length) {
+    typeMessage();
+}
+
+function typeMessage(){
+
+    if(
+        messageIndex <
+        birthdayMessage.length
+    ){
 
         typewriterElement.innerHTML +=
-        message.charAt(charIndex);
+        birthdayMessage.charAt(
+            messageIndex
+        );
 
-        charIndex++;
+        messageIndex++;
 
-        setTimeout(typeWriter, 40);
+        setTimeout(
+            typeMessage,
+            40
+        );
     }
 }
 
-window.addEventListener("load", () => {
 
-    setTimeout(typeWriter, 800);
-
-});
-
-
-/* =========================
-   MUSIC BUTTON
-========================= */
+/* ==================================
+   MUSIC
+================================== */
 
 const music =
-document.getElementById("birthdayMusic");
+document.getElementById(
+"birthdayMusic"
+);
 
 const musicBtn =
-document.getElementById("musicBtn");
+document.getElementById(
+"musicBtn"
+);
 
-let musicPlaying = false;
+let isPlaying = false;
 
-musicBtn.addEventListener("click", () => {
+if(musicBtn){
 
-    if (!musicPlaying) {
+    musicBtn.addEventListener(
+    "click",
+    () => {
 
-        music.play();
+        if(!isPlaying){
 
-        musicBtn.innerHTML =
-        "⏸ Pause Music";
+            music.play();
 
-        musicPlaying = true;
+            musicBtn.innerHTML =
+            "⏸ Pause Music";
 
-    } else {
+            isPlaying = true;
 
-        music.pause();
+        }else{
 
-        musicBtn.innerHTML =
-        "🎵 Play Music";
+            music.pause();
 
-        musicPlaying = false;
-    }
+            musicBtn.innerHTML =
+            "🎵 Play Music";
 
-});
+            isPlaying = false;
+        }
+
+    });
+
+}
 
 
-/* =========================
-   FLIP MEMORY CARDS
-========================= */
+/* ==================================
+   MEMORY CARD FLIP
+================================== */
 
-const memoryCards =
-document.querySelectorAll(".memory-card");
+const cards =
+document.querySelectorAll(
+".memory-card"
+);
 
-memoryCards.forEach(card => {
+cards.forEach(card => {
 
-    card.addEventListener("click", () => {
+    card.addEventListener(
+    "click",
+    () => {
 
-        card.classList.toggle("flip");
+        card.classList.toggle(
+        "flip"
+        );
 
     });
 
 });
 
 
-/* =========================
+/* ==================================
    SECRET LETTER
-========================= */
+================================== */
 
-const openLetterBtn =
-document.getElementById("openLetter");
+const openLetter =
+document.getElementById(
+"openLetter"
+);
 
 const secretLetter =
-document.getElementById("secretLetter");
+document.getElementById(
+"secretLetter"
+);
 
-openLetterBtn.addEventListener("click", () => {
+if(openLetter){
 
-    if (
-        secretLetter.style.display === "block"
-    ) {
+    openLetter.addEventListener(
+    "click",
+    () => {
 
-        secretLetter.style.display = "none";
+        if(
+            secretLetter.style.display
+            === "block"
+        ){
 
-        openLetterBtn.innerHTML =
-        "Open Secret Letter";
+            secretLetter.style.display =
+            "none";
 
-    } else {
+            openLetter.innerHTML =
+            "Open Secret Letter";
 
-        secretLetter.style.display = "block";
+        }else{
 
-        openLetterBtn.innerHTML =
-        "Close Letter";
+            secretLetter.style.display =
+            "block";
 
-        secretLetter.scrollIntoView({
-            behavior: "smooth"
-        });
-    }
+            openLetter.innerHTML =
+            "Close Letter";
 
-});
+        }
+
+    });
+
+}
 
 
-/* =========================
+/* ==================================
    FINAL SURPRISE
-========================= */
+================================== */
 
 const surpriseBtn =
-document.getElementById("surpriseBtn");
+document.getElementById(
+"surpriseBtn"
+);
 
 const surpriseScreen =
-document.getElementById("surpriseScreen");
+document.getElementById(
+"surpriseScreen"
+);
 
-surpriseBtn.addEventListener("click", () => {
+if(surpriseBtn){
 
-    surpriseScreen.style.display = "flex";
+    surpriseBtn.addEventListener(
+    "click",
+    () => {
 
-    createConfetti();
+        surpriseScreen.style.display =
+        "flex";
 
-});
+        createConfetti();
+
+    });
+
+}
+
+if(surpriseScreen){
+
+    surpriseScreen.addEventListener(
+    "click",
+    () => {
+
+        surpriseScreen.style.display =
+        "none";
+
+    });
+
+}
 
 
-surpriseScreen.addEventListener("click", () => {
+/* ==================================
+   CONFETTI
+================================== */
 
-    surpriseScreen.style.display = "none";
+function createConfetti(){
 
-});
-
-
-/* =========================
-   SIMPLE CONFETTI
-========================= */
-
-function createConfetti() {
-
-    for (let i = 0; i < 150; i++) {
+    for(let i=0;i<150;i++){
 
         const confetti =
         document.createElement("div");
 
-        confetti.classList.add("confetti");
+        confetti.classList.add(
+        "confetti"
+        );
 
         confetti.style.left =
-        Math.random() * 100 + "vw";
+        Math.random()*100 + "vw";
 
         confetti.style.animationDuration =
-        Math.random() * 3 + 2 + "s";
+        Math.random()*3 + 2 + "s";
 
-        confetti.style.opacity =
-        Math.random();
+        confetti.style.background =
+        `hsl(${Math.random()*360},
+        100%,70%)`;
 
-        confetti.style.transform =
-        `rotate(${Math.random()*360}deg)`;
-
-        document.body.appendChild(confetti);
+        document.body.appendChild(
+        confetti
+        );
 
         setTimeout(() => {
 
             confetti.remove();
 
-        }, 5000);
+        },5000);
+
     }
+
 }
 
 
-/* =========================
-   FALLING PETALS
-========================= */
+/* ==================================
+   PETALS
+================================== */
 
 const petalsContainer =
-document.getElementById("petals-container");
+document.getElementById(
+"petals-container"
+);
 
-function createPetal() {
+function createPetal(){
+
+    if(!petalsContainer)
+    return;
 
     const petal =
     document.createElement("div");
@@ -283,135 +452,63 @@ function createPetal() {
     petal.classList.add("petal");
 
     petal.style.left =
-    Math.random() * window.innerWidth + "px";
+    Math.random()*100 + "vw";
 
     petal.style.animationDuration =
-    Math.random() * 5 + 5 + "s";
+    Math.random()*5 + 5 + "s";
 
-    petal.style.opacity =
-    Math.random();
-
-    petal.style.width =
-    Math.random() * 12 + 10 + "px";
-
-    petal.style.height =
-    petal.style.width;
-
-    petalsContainer.appendChild(petal);
+    petalsContainer.appendChild(
+    petal
+    );
 
     setTimeout(() => {
 
         petal.remove();
 
-    }, 10000);
+    },10000);
 }
 
-setInterval(createPetal, 300);
-
-
-/* =========================
-   REVEAL ANIMATION
-========================= */
-
-const reveals =
-document.querySelectorAll(
-    ".reason-card, .chapter, .memory-card"
+setInterval(
+    createPetal,
+    400
 );
 
+
+/* ==================================
+   SCROLL REVEAL
+================================== */
+
 const observer =
-new IntersectionObserver(entries => {
+new IntersectionObserver(
 
-    entries.forEach(entry => {
+(entries)=>{
 
-        if (entry.isIntersecting) {
+    entries.forEach(entry=>{
 
-            entry.target.classList.add("active");
+        if(entry.isIntersecting){
+
+            entry.target.classList.add(
+            "active"
+            );
+
         }
 
     });
 
-}, {
-    threshold: 0.2
-});
+},
+{
+    threshold:0.15
+}
+);
 
-reveals.forEach(item => {
+document
+.querySelectorAll(
+".reason-card,.chapter,.memory-card"
+)
+.forEach(item=>{
 
     item.classList.add("reveal");
 
     observer.observe(item);
 
 });
-
-
-/* =========================
-   EXTRA STYLES CREATED
-   VIA JS
-========================= */
-
-const style =
-document.createElement("style");
-
-style.innerHTML = `
-
-.confetti{
-    position:fixed;
-    top:-20px;
-    width:10px;
-    height:10px;
-    z-index:99999;
-    background:hsl(
-        ${Math.random()*360},
-        100%,
-        70%
-    );
-    animation:fall linear forwards;
-}
-
-@keyframes fall{
-
-    to{
-        transform:
-        translateY(110vh)
-        rotate(720deg);
-    }
-}
-
-.petal{
-
-    position:absolute;
-
-    top:-30px;
-
-    background:#ffb6c1;
-
-    border-radius:
-    50% 0 50% 50%;
-
-    transform:rotate(45deg);
-
-    animation:
-    petalFall linear forwards;
-}
-
-@keyframes petalFall{
-
-    from{
-
-        transform:
-        translateY(0)
-        rotate(0deg);
-
-    }
-
-    to{
-
-        transform:
-        translateY(110vh)
-        rotate(360deg);
-
-    }
-}
-
-`;
-
-document.head.appendChild(style);
