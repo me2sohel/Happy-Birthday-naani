@@ -1,44 +1,43 @@
-/* ==================================
+/* ===================================
    ELEMENTS
-================================== */
+=================================== */
 
-const lockScreen =
-document.getElementById("lockScreen");
+const lockScreen = document.getElementById("lockScreen");
+const openingScreen = document.getElementById("openingScreen");
+const mainWebsite = document.getElementById("mainWebsite");
 
-const openingScreen =
-document.getElementById("openingScreen");
+const popup = document.getElementById("popup");
+const closePopup = document.getElementById("closePopup");
 
-const mainWebsite =
-document.getElementById("mainWebsite");
+const giftButton = document.getElementById("giftButton");
 
-const unlockBtn =
-document.getElementById("unlockBtn");
-
-const daysEl =
-document.getElementById("days");
-
-const hoursEl =
-document.getElementById("hours");
-
-const minutesEl =
-document.getElementById("minutes");
-
-const secondsEl =
-document.getElementById("seconds");
+const days = document.getElementById("days");
+const hours = document.getElementById("hours");
+const minutes = document.getElementById("minutes");
+const seconds = document.getElementById("seconds");
 
 
-/* ==================================
-   COUNTDOWN TO UNLOCK
-================================== */
+/* ===================================
+   COUNTDOWN
+=================================== */
 
 /*
+IMPORTANT
+
 CHANGE THIS DATE
+TO HER BIRTHDAY
+
+Example:
+
+June 28, 2026 00:00:00
 */
 
 const unlockDate =
-new Date("June 24, 2026 00:00:00").getTime();
+new Date("June 28, 2026 00:00:00").getTime();
 
-function updateGiftCountdown(){
+let giftUnlocked = false;
+
+function updateCountdown(){
 
     const now = new Date().getTime();
 
@@ -47,82 +46,107 @@ function updateGiftCountdown(){
 
     if(distance <= 0){
 
-        daysEl.innerText = "🎉";
-        hoursEl.innerText = "🎉";
-        minutesEl.innerText = "🎉";
-        secondsEl.innerText = "🎉";
+        giftUnlocked = true;
 
-        unlockBtn.disabled = false;
+        days.innerText = "🎉";
+        hours.innerText = "🎉";
+        minutes.innerText = "🎉";
+        seconds.innerText = "🎉";
 
-        unlockBtn.classList.add("active");
+        giftButton.innerHTML =
+        "🎁 Open My Surprise ✨";
 
-        unlockBtn.innerHTML =
-        "🎁 Open Your Surprise";
+        giftButton.style.background =
+        "#38c172";
 
         return;
     }
 
-    const days =
-    Math.floor(
+    const d = Math.floor(
         distance /
         (1000*60*60*24)
     );
 
-    const hours =
-    Math.floor(
+    const h = Math.floor(
         (distance %
         (1000*60*60*24))
         /
         (1000*60*60)
     );
 
-    const minutes =
-    Math.floor(
+    const m = Math.floor(
         (distance %
         (1000*60*60))
         /
         (1000*60)
     );
 
-    const seconds =
-    Math.floor(
+    const s = Math.floor(
         (distance %
         (1000*60))
         /
         1000
     );
 
-    daysEl.innerText =
-    String(days).padStart(2,"0");
+    days.innerText =
+    String(d).padStart(2,"0");
 
-    hoursEl.innerText =
-    String(hours).padStart(2,"0");
+    hours.innerText =
+    String(h).padStart(2,"0");
 
-    minutesEl.innerText =
-    String(minutes).padStart(2,"0");
+    minutes.innerText =
+    String(m).padStart(2,"0");
 
-    secondsEl.innerText =
-    String(seconds).padStart(2,"0");
+    seconds.innerText =
+    String(s).padStart(2,"0");
 }
 
-setInterval(
-    updateGiftCountdown,
-    1000
-);
-
-updateGiftCountdown();
+setInterval(updateCountdown,1000);
+updateCountdown();
 
 
-/* ==================================
+/* ===================================
+   GIFT BUTTON
+=================================== */
+
+giftButton.addEventListener("click",()=>{
+
+    if(!giftUnlocked){
+
+        popup.style.display = "flex";
+        return;
+    }
+
+    openGift();
+
+});
+
+
+/* ===================================
+   CLOSE POPUP
+=================================== */
+
+closePopup.addEventListener("click",()=>{
+
+    popup.style.display = "none";
+
+});
+
+popup.addEventListener("click",(e)=>{
+
+    if(e.target === popup){
+
+        popup.style.display = "none";
+    }
+
+});
+
+
+/* ===================================
    OPEN GIFT
-================================== */
+=================================== */
 
-unlockBtn.addEventListener(
-"click",
-() => {
-
-    if(unlockBtn.disabled)
-    return;
+function openGift(){
 
     lockScreen.style.display =
     "none";
@@ -130,7 +154,7 @@ unlockBtn.addEventListener(
     openingScreen.style.display =
     "flex";
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
         openingScreen.style.display =
         "none";
@@ -138,19 +162,23 @@ unlockBtn.addEventListener(
         mainWebsite.style.display =
         "block";
 
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-
         startTypewriter();
+
+        createConfetti();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
 
     },3000);
 
-});
+}
 
 
-/* ==================================
+/* ===================================
    JOURNEY BUTTON
-================================== */
+=================================== */
 
 const journeyBtn =
 document.getElementById("journeyBtn");
@@ -159,7 +187,7 @@ if(journeyBtn){
 
     journeyBtn.addEventListener(
     "click",
-    () => {
+    ()=>{
 
         document
         .querySelector(".wish-section")
@@ -172,14 +200,12 @@ if(journeyBtn){
 }
 
 
-/* ==================================
+/* ===================================
    TYPEWRITER
-================================== */
+=================================== */
 
-const typewriterElement =
-document.getElementById(
-"typewriter"
-);
+const typewriter =
+document.getElementById("typewriter");
 
 const birthdayMessage =
 
@@ -188,54 +214,50 @@ const birthdayMessage =
 Today is not just another day.
 
 It's the celebration of the day
-someone incredibly special
-came into this world.
+someone truly special came into this world.
 
-I hope today brings you smiles,
+I hope this year brings you happiness,
 beautiful memories,
-and all the happiness you deserve.
+and everything your heart quietly wishes for.
 
 Thank you for being you. ✨`;
 
-let messageIndex = 0;
+let typeIndex = 0;
 
 function startTypewriter(){
 
-    if(!typewriterElement)
-    return;
+    if(!typewriter) return;
 
-    typewriterElement.innerHTML = "";
+    typewriter.innerHTML = "";
+    typeIndex = 0;
 
-    messageIndex = 0;
-
-    typeMessage();
+    writeText();
 }
 
-function typeMessage(){
+function writeText(){
 
-    if(
-        messageIndex <
-        birthdayMessage.length
-    ){
+    if(typeIndex <
+       birthdayMessage.length){
 
-        typewriterElement.innerHTML +=
+        typewriter.innerHTML +=
         birthdayMessage.charAt(
-            messageIndex
+            typeIndex
         );
 
-        messageIndex++;
+        typeIndex++;
 
         setTimeout(
-            typeMessage,
+            writeText,
             40
         );
     }
+
 }
 
 
-/* ==================================
+/* ===================================
    MUSIC
-================================== */
+=================================== */
 
 const music =
 document.getElementById(
@@ -253,7 +275,7 @@ if(musicBtn){
 
     musicBtn.addEventListener(
     "click",
-    () => {
+    ()=>{
 
         if(!isPlaying){
 
@@ -279,23 +301,23 @@ if(musicBtn){
 }
 
 
-/* ==================================
-   MEMORY CARD FLIP
-================================== */
+/* ===================================
+   MEMORY CARDS
+=================================== */
 
 const cards =
 document.querySelectorAll(
 ".memory-card"
 );
 
-cards.forEach(card => {
+cards.forEach(card=>{
 
     card.addEventListener(
     "click",
-    () => {
+    ()=>{
 
         card.classList.toggle(
-        "flip"
+            "flip"
         );
 
     });
@@ -303,9 +325,9 @@ cards.forEach(card => {
 });
 
 
-/* ==================================
+/* ===================================
    SECRET LETTER
-================================== */
+=================================== */
 
 const openLetter =
 document.getElementById(
@@ -321,7 +343,7 @@ if(openLetter){
 
     openLetter.addEventListener(
     "click",
-    () => {
+    ()=>{
 
         if(
             secretLetter.style.display
@@ -349,9 +371,9 @@ if(openLetter){
 }
 
 
-/* ==================================
+/* ===================================
    FINAL SURPRISE
-================================== */
+=================================== */
 
 const surpriseBtn =
 document.getElementById(
@@ -367,7 +389,7 @@ if(surpriseBtn){
 
     surpriseBtn.addEventListener(
     "click",
-    () => {
+    ()=>{
 
         surpriseScreen.style.display =
         "flex";
@@ -382,7 +404,7 @@ if(surpriseScreen){
 
     surpriseScreen.addEventListener(
     "click",
-    () => {
+    ()=>{
 
         surpriseScreen.style.display =
         "none";
@@ -392,9 +414,9 @@ if(surpriseScreen){
 }
 
 
-/* ==================================
+/* ===================================
    CONFETTI
-================================== */
+=================================== */
 
 function createConfetti(){
 
@@ -404,37 +426,39 @@ function createConfetti(){
         document.createElement("div");
 
         confetti.classList.add(
-        "confetti"
+            "confetti"
         );
 
         confetti.style.left =
         Math.random()*100 + "vw";
 
-        confetti.style.animationDuration =
-        Math.random()*3 + 2 + "s";
+        confetti.style.top =
+        "-20px";
 
         confetti.style.background =
         `hsl(${Math.random()*360},
         100%,70%)`;
 
+        confetti.style.animationDuration =
+        (Math.random()*3+2)+"s";
+
         document.body.appendChild(
-        confetti
+            confetti
         );
 
-        setTimeout(() => {
+        setTimeout(()=>{
 
             confetti.remove();
 
         },5000);
-
     }
 
 }
 
 
-/* ==================================
+/* ===================================
    PETALS
-================================== */
+=================================== */
 
 const petalsContainer =
 document.getElementById(
@@ -443,25 +467,26 @@ document.getElementById(
 
 function createPetal(){
 
-    if(!petalsContainer)
-    return;
+    if(!petalsContainer) return;
 
     const petal =
     document.createElement("div");
 
-    petal.classList.add("petal");
+    petal.classList.add(
+        "petal"
+    );
 
     petal.style.left =
     Math.random()*100 + "vw";
 
     petal.style.animationDuration =
-    Math.random()*5 + 5 + "s";
+    (Math.random()*5+5)+"s";
 
     petalsContainer.appendChild(
-    petal
+        petal
     );
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
         petal.remove();
 
@@ -474,9 +499,9 @@ setInterval(
 );
 
 
-/* ==================================
+/* ===================================
    SCROLL REVEAL
-================================== */
+=================================== */
 
 const observer =
 new IntersectionObserver(
@@ -488,7 +513,7 @@ new IntersectionObserver(
         if(entry.isIntersecting){
 
             entry.target.classList.add(
-            "active"
+                "active"
             );
 
         }
@@ -503,7 +528,7 @@ new IntersectionObserver(
 
 document
 .querySelectorAll(
-".reason-card,.chapter,.memory-card"
+".reason-card,.memory-card,.chapter"
 )
 .forEach(item=>{
 
@@ -512,3 +537,82 @@ document
     observer.observe(item);
 
 });
+
+
+/* ===================================
+   DYNAMIC STYLES
+=================================== */
+
+const style =
+document.createElement("style");
+
+style.innerHTML = `
+
+.confetti{
+
+    position:fixed;
+
+    width:10px;
+    height:10px;
+
+    z-index:99999;
+
+    animation:
+    confettiFall linear forwards;
+}
+
+@keyframes confettiFall{
+
+    to{
+
+        transform:
+        translateY(110vh)
+        rotate(720deg);
+
+    }
+
+}
+
+.petal{
+
+    position:absolute;
+
+    top:-20px;
+
+    width:12px;
+    height:12px;
+
+    background:#ffb6c1;
+
+    border-radius:
+    50% 0 50% 50%;
+
+    transform:
+    rotate(45deg);
+
+    animation:
+    petalFall linear forwards;
+}
+
+@keyframes petalFall{
+
+    from{
+
+        transform:
+        translateY(0)
+        rotate(0deg);
+
+    }
+
+    to{
+
+        transform:
+        translateY(110vh)
+        rotate(360deg);
+
+    }
+
+}
+`;
+
+document.head.appendChild(style);
