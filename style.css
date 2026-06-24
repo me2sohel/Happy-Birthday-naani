@@ -99,32 +99,45 @@ p{
     margin:auto;
 }
 
-.countdown-box{
+.journey-box{
     margin-top:50px;
-    background:white;
-    padding:30px;
-    border-radius:25px;
+}
+
+.journey-text{
+    font-size:1.1rem;
+    color:#5b6474;
+    margin-bottom:25px;
+}
+
+#journeyBtn{
+
+    background:#ff77a8;
+
+    color:white;
+
+    border:none;
+
+    padding:18px 35px;
+
+    border-radius:50px;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:.3s;
+
     box-shadow:
-    0 10px 35px rgba(0,0,0,.08);
+    0 10px 25px rgba(255,119,168,.25);
 }
 
-.countdown-box h3{
-    margin-bottom:20px;
-}
+#journeyBtn:hover{
 
-#countdown{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-}
+    transform:translateY(-4px);
 
-#countdown span{
-    background:#ffe6f0;
-    padding:15px 20px;
-    border-radius:15px;
-    font-weight:600;
-    min-width:120px;
+    box-shadow:
+    0 15px 35px rgba(255,119,168,.4);
+
 }
 
 #musicBtn{
