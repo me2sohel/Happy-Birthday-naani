@@ -36,7 +36,7 @@ CHANGE THIS DATE
 */
 
 const unlockDate =
-new Date("June 28, 2026 00:00:00").getTime();
+new Date("June 24, 2026 00:00:00").getTime();
 
 function updateGiftCountdown(){
 
