@@ -1,6 +1,6 @@
-/* =========================
-   GLOBAL STYLES
-========================= */
+/* ==================================
+   GLOBAL
+================================== */
 
 *{
     margin:0;
@@ -14,26 +14,10 @@ html{
 
 body{
     font-family:'Poppins',sans-serif;
-    background:#f7f8fc;
-    color:#2d3748;
+    background:#fafbff;
+    color:#24324a;
     overflow-x:hidden;
-    position:relative;
 }
-
-/* =========================
-   FALLING PETALS
-========================= */
-
-#petals-container{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:999;
-}
-
-/* =========================
-   SECTION COMMON
-========================= */
 
 section{
     padding:100px 8%;
@@ -46,23 +30,213 @@ h1,h2,h3{
 h2{
     text-align:center;
     margin-bottom:50px;
-    font-size:2.6rem;
-    color:#24324a;
+    font-size:2.5rem;
 }
 
 p{
     line-height:1.8;
 }
 
-/* =========================
-   HERO SECTION
-========================= */
+button{
+    font-family:'Poppins',sans-serif;
+}
 
-.hero{
-    min-height:100vh;
+/* ==================================
+   LOCK SCREEN
+================================== */
+
+#lockScreen{
+
+    position:fixed;
+    inset:0;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
+    text-align:center;
+
+    background:
+    linear-gradient(
+        135deg,
+        #fff4f8,
+        #f0f6ff
+    );
+
+    z-index:9999;
+}
+
+.lock-content{
+    max-width:700px;
+    padding:40px;
+}
+
+.gift-icon{
+    font-size:5rem;
+    margin-bottom:25px;
+    animation:floatGift 2s ease-in-out infinite;
+}
+
+@keyframes floatGift{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+}
+
+.lock-content h1{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.lock-message{
+    color:#5b6474;
+    margin-bottom:40px;
+}
+
+#giftCountdown{
+
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+
+    margin-bottom:40px;
+}
+
+#giftCountdown span{
+
+    background:white;
+
+    min-width:90px;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+}
+
+#unlockBtn{
+
+    border:none;
+
+    background:#ff77a8;
+
+    color:white;
+
+    padding:18px 40px;
+
+    border-radius:50px;
+
+    font-size:1rem;
+
+    cursor:not-allowed;
+
+    opacity:.6;
+}
+
+#unlockBtn.active{
+
+    cursor:pointer;
+
+    opacity:1;
+
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+/* ==================================
+   OPENING SCREEN
+================================== */
+
+#openingScreen{
+
+    position:fixed;
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    background:white;
+
+    z-index:9998;
+}
+
+.opening-content{
+    text-align:center;
+}
+
+.opening-gift{
+
+    font-size:6rem;
+
+    animation:openGift 2s infinite;
+}
+
+@keyframes openGift{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.2);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+.opening-content h2{
+    margin-top:20px;
+}
+
+/* ==================================
+   MAIN WEBSITE
+================================== */
+
+#mainWebsite{
+    display:none;
+}
+
+/* ==================================
+   HERO
+================================== */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
     text-align:center;
 
     background:
@@ -78,57 +252,55 @@ p{
 }
 
 .small-title{
-    font-size:1rem;
+
     color:#ff77a8;
-    margin-bottom:20px;
-    font-weight:600;
+
     letter-spacing:2px;
+
+    font-weight:600;
+
+    margin-bottom:20px;
 }
 
 .hero h1{
+
     font-size:4.5rem;
+
     line-height:1.1;
-    color:#24324a;
+
     margin-bottom:25px;
 }
 
 .hero-text{
-    font-size:1.2rem;
-    color:#5b6474;
+
     max-width:700px;
+
     margin:auto;
-}
 
-.journey-box{
-    margin-top:50px;
-}
+    font-size:1.2rem;
 
-.journey-text{
-    font-size:1.1rem;
     color:#5b6474;
-    margin-bottom:25px;
 }
 
 #journeyBtn{
+
+    margin-top:40px;
+
+    border:none;
 
     background:#ff77a8;
 
     color:white;
 
-    border:none;
-
     padding:18px 35px;
 
     border-radius:50px;
 
-    font-size:1rem;
-
     cursor:pointer;
 
-    transition:.3s;
+    font-size:1rem;
 
-    box-shadow:
-    0 10px 25px rgba(255,119,168,.25);
+    transition:.3s;
 }
 
 #journeyBtn:hover{
@@ -136,315 +308,68 @@ p{
     transform:translateY(-4px);
 
     box-shadow:
-    0 15px 35px rgba(255,119,168,.4);
-
+    0 10px 30px rgba(255,119,168,.4);
 }
 
-#musicBtn{
-    margin-top:35px;
-    border:none;
-    background:#ff77a8;
-    color:white;
-    padding:15px 30px;
-    border-radius:50px;
-    cursor:pointer;
-    font-size:1rem;
-    transition:.3s;
-}
-
-#musicBtn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 8px 25px rgba(255,119,168,.4);
-}
-
-/* =========================
-   TYPEWRITER SECTION
-========================= */
+/* ==================================
+   TYPEWRITER
+================================== */
 
 .wish-section{
     background:white;
 }
 
 #typewriter{
+
     max-width:800px;
+
     margin:auto;
+
     text-align:center;
+
     font-size:1.2rem;
+
+    min-height:150px;
+
     color:#555;
-    min-height:120px;
 }
 
-/* =========================
-   28 REASONS
-========================= */
+/* ==================================
+   REASONS
+================================== */
 
 .reasons-section{
-    background:#fdf6fa;
+    background:#fff7fb;
 }
 
 .reasons-grid{
+
     display:grid;
+
     grid-template-columns:
     repeat(auto-fit,minmax(220px,1fr));
+
     gap:20px;
 }
 
 .reason-card{
+
     background:white;
+
     padding:25px;
+
     border-radius:20px;
+
     text-align:center;
+
+    transition:.3s;
 
     box-shadow:
     0 8px 20px rgba(0,0,0,.05);
-
-    transition:.3s;
 }
 
 .reason-card:hover{
-    transform:translateY(-8px);
-}
 
-.reason-card:nth-child(even){
-    border-top:4px solid #ff77a8;
-}
-
-.reason-card:nth-child(odd){
-    border-top:4px solid #8ab6ff;
-}
-
-/* =========================
-   MEMORY CARDS
-========================= */
-
-.memory-section{
-    background:white;
-}
-
-.memory-grid{
-    display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-}
-
-.memory-card{
-    height:250px;
-    position:relative;
-    cursor:pointer;
-    perspective:1000px;
-}
-
-.memory-card .front,
-.memory-card .back{
-    position:absolute;
-    width:100%;
-    height:100%;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-    padding:25px;
-
-    border-radius:20px;
-
-    backface-visibility:hidden;
-
-    transition:.7s;
-
-    box-shadow:
-    0 10px 25px rgba(0,0,0,.08);
-}
-
-.memory-card .front{
-    background:#ffeef5;
-    font-size:1.3rem;
-    font-weight:600;
-}
-
-.memory-card .back{
-    background:#24324a;
-    color:white;
-    transform:rotateY(180deg);
-}
-
-.memory-card.flip .front{
-    transform:rotateY(180deg);
-}
-
-.memory-card.flip .back{
-    transform:rotateY(360deg);
-}
-
-/* =========================
-   STORY SECTION
-========================= */
-
-.story-section{
-    background:#f5f8ff;
-}
-
-.story-container{
-    max-width:900px;
-    margin:auto;
-}
-
-.chapter{
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    margin-bottom:25px;
-
-    box-shadow:
-    0 8px 20px rgba(0,0,0,.05);
-}
-
-.chapter h3{
-    color:#ff77a8;
-    margin-bottom:10px;
-}
-
-/* =========================
-   LETTER SECTION
-========================= */
-
-.letter-section{
-    text-align:center;
-    background:white;
-}
-
-#openLetter{
-    background:#24324a;
-    color:white;
-    border:none;
-    padding:15px 30px;
-    border-radius:50px;
-    cursor:pointer;
-}
-
-#secretLetter{
-    display:none;
-    max-width:700px;
-    margin:40px auto 0;
-
-    background:#fff5f7;
-
-    padding:40px;
-    border-radius:20px;
-
-    box-shadow:
-    0 10px 25px rgba(0,0,0,.06);
-}
-
-#secretLetter p{
-    margin-bottom:15px;
-}
-
-/* =========================
-   FINAL SECTION
-========================= */
-
-.final-section{
-    text-align:center;
-    background:#fdf6fa;
-}
-
-#surpriseBtn{
-    border:none;
-    background:#ff77a8;
-    color:white;
-
-    padding:18px 40px;
-
-    border-radius:50px;
-
-    font-size:1.1rem;
-    cursor:pointer;
-}
-
-/* =========================
-   SURPRISE SCREEN
-========================= */
-
-#surpriseScreen{
-    position:fixed;
-    inset:0;
-
-    background:
-    linear-gradient(
-    135deg,
-    #ff77a8,
-    #8ab6ff
-    );
-
-    display:none;
-
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
-
-    z-index:10000;
-
-    padding:20px;
-}
-
-.surprise-content{
-    color:white;
-}
-
-.surprise-content h1{
-    font-size:4rem;
-    margin-bottom:20px;
-}
-
-.surprise-content p{
-    font-size:1.3rem;
-    max-width:700px;
-}
-
-/* =========================
-   SCROLL ANIMATION
-========================= */
-
-.reveal{
-    opacity:0;
-    transform:translateY(50px);
-    transition:.8s;
-}
-
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:768px){
-
-    section{
-        padding:80px 6%;
-    }
-
-    .hero h1{
-        font-size:3rem;
-    }
-
-    h2{
-        font-size:2rem;
-    }
-
-    .surprise-content h1{
-        font-size:2.5rem;
-    }
-
-    #countdown span{
-        min-width:90px;
-        font-size:.9rem;
-    }
-
+    transform:
+    translateY(-8px);
 }
