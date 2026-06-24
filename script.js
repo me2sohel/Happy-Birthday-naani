@@ -2,7 +2,7 @@
    COUNTDOWN TIMER
 ========================= */
 
-const birthdayDate = new Date("June 28, 2026 00:00:00").getTime();
+/*const birthdayDate = new Date("June 28, 2026 00:00:00").getTime();
 
 const countdown = document.getElementById("countdown");
 
@@ -60,7 +60,18 @@ updateCountdown();
 /* =========================
    TYPEWRITER EFFECT
 ========================= */
+const journeyBtn =
+document.getElementById("journeyBtn");
 
+journeyBtn.addEventListener("click", () => {
+
+    document
+    .querySelector(".wish-section")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+});
 const message = `
 
 Happy Birthday, Puchu ❤️
