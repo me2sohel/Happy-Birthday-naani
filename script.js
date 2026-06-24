@@ -2,6 +2,7 @@
    ELEMENTS
 =================================== */
 
+console.log("Script loaded");
 const lockScreen = document.getElementById("lockScreen");
 const openingScreen = document.getElementById("openingScreen");
 const mainWebsite = document.getElementById("mainWebsite");
