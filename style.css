@@ -497,23 +497,29 @@ button{
    STORY
 =================================== */
 
-.story-section{
-    background:#f5f8ff;
+.before-leave-section{
+    max-width:700px;
+    margin:0 auto;
+    padding:100px 30px;
+    text-align:center;
 }
 
-.chapter{
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    margin-bottom:20px;
-
-    box-shadow:
-    0 10px 20px rgba(0,0,0,.05);
+.before-leave-section h2{
+    font-size:2.4rem;
+    margin-bottom:35px;
 }
 
-.chapter h3{
-    color:#ff76a7;
-    margin-bottom:10px;
+.before-leave-section p{
+    font-size:1.08rem;
+    line-height:1.9;
+    color:#555;
+    margin-bottom:28px;
+}
+
+.before-leave-section .final-line{
+    margin-top:40px;
+    font-size:1.3rem;
+    color:#ff6b9a;
 }
 
 /* ===================================
