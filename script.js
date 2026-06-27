@@ -621,4 +621,38 @@ style.innerHTML = `
 }
 `;
 
+/* ===================================
+   FOOTER POPUP
+=================================== */
+
+const creatorBtn = document.getElementById("creatorBtn");
+const creatorMessage = document.getElementById("creatorMessage");
+const closeCreatorMessage = document.getElementById("closeCreatorMessage");
+
+if (creatorBtn) {
+    creatorBtn.addEventListener("click", () => {
+        creatorMessage.style.display = "flex";
+    });
+
+}
+
+if (closeCreatorMessage) {
+    closeCreatorMessage.addEventListener("click", () => {
+        creatorMessage.style.display = "none";
+
+    });
+
+}
+
+/* Close popup when clicking outside */
+
+creatorMessage.addEventListener("click", (e) => {
+
+    if (e.target === creatorMessage) {
+        creatorMessage.style.display = "none";
+
+    }
+
+});
+
 document.head.appendChild(style);
