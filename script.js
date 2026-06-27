@@ -215,7 +215,7 @@ document.getElementById("typewriter");
 
 const birthdayMessage =
 
-`Happy Birthday ❤️
+`Happy Birthday, Nishat ❤️
 
 Today is not just another day.
 
