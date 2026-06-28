@@ -655,4 +655,81 @@ creatorMessage.addEventListener("click", (e) => {
 
 });
 
+/* =====================================================
+   SECRET STAR SURPRISE
+===================================================== */
+
+const secretStar = document.getElementById("secretStar");
+const starSecret = document.getElementById("starSecret");
+const closeStarSecret = document.getElementById("closeStarSecret");
+const hiddenReason = document.getElementById("hiddenReason");
+
+let reasonTimer = null;
+
+if (
+    secretStar &&
+    starSecret &&
+    closeStarSecret &&
+    hiddenReason
+) {
+
+    secretStar.addEventListener("click", () => {
+
+        // Show secret screen
+        starSecret.style.display = "flex";
+
+        // Disable page scrolling
+        document.body.style.overflow = "hidden";
+
+        // Reset hidden reason
+        hiddenReason.classList.remove("show");
+
+        // Show Reason #29 after 3 seconds
+        clearTimeout(reasonTimer);
+
+        reasonTimer = setTimeout(() => {
+
+            hiddenReason.classList.add("show");
+
+        }, 3000);
+
+    });
+
+    closeStarSecret.addEventListener("click", () => {
+
+        // Hide secret screen
+        starSecret.style.display = "none";
+
+        // Enable scrolling again
+        document.body.style.overflow = "auto";
+
+        hiddenReason.classList.remove("show");
+
+    });
+
+    // Close when clicking outside content
+    starSecret.addEventListener("click", (e) => {
+
+        if (e.target === starSecret) {
+
+            starSecret.style.display = "none";
+
+            document.body.style.overflow = "auto";
+
+            hiddenReason.classList.remove("show");
+
+        }
+
+    });
+
+}
+
+/* =====================================================
+   OPTIONAL TYPEWRITER EFFECT FOR SECRET MESSAGE
+===================================================== */
+
+// Future enhancement:
+// You can replace the paragraph with a typewriter animation
+// if you'd like the text to appear letter by letter.
+
 document.head.appendChild(style);
