@@ -33,11 +33,11 @@ Example:
 June 28, 2026 00:00:00
 */
 
-/*const unlockDate =
-new Date("June 28, 2026 00:00:00").getTime();*/
-
 const unlockDate =
-new Date(Date.now() + 10000).getTime();
+new Date("June 28, 2026 00:00:00").getTime();
+
+/*const unlockDate =
+new Date(Date.now() + 10000).getTime();/*
 
 /* Unlock Date Ends Here */
 
